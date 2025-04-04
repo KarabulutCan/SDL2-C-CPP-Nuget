@@ -1,5 +1,4 @@
-# SDL2-C-Nuget
-SDL2 C++ Nuget All in One
+
 # SDL2Package
 
 SDL2Package is a native C++ NuGet package that bundles [SDL2](https://www.libsdl.org/) and its main extensions (SDL2_image, SDL2_mixer, and SDL2_ttf). By installing this package, you get all the necessary headers, libraries, and DLLs automatically added to your project.
