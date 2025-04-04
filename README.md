@@ -38,6 +38,7 @@ Include the headers:
 
 ## Initialize and use SDL:
 
+```cpp
 #include <SDL2/SDL.h>
 #include <iostream>
 int main(int argc, char\* argv[])
@@ -51,3 +52,6 @@ std::cout << "SDL is initialized successfully!\n";
     SDL_Quit();
     return 0;
 }
+```
+
+
