@@ -1,0 +1,77 @@
+﻿<Project>
+
+  <!-- x86 platform -->
+  <ItemDefinitionGroup Condition="'$(Platform)'=='x86'">
+    <ClCompile>
+      <!-- Include path: build\native -> ../.. -> include -->
+      <AdditionalIncludeDirectories>
+        $(AdditionalIncludeDirectories);
+        $(MSBuildThisFileDirectory)../../include
+      </AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+
+    <Link>
+      <!-- Lib path: build\native -> ../.. -> lib/native/x86 -->
+      <AdditionalLibraryDirectories>
+        $(AdditionalLibraryDirectories);
+        $(MSBuildThisFileDirectory)../../lib/native/x86
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+        SDL2.lib;SDL2main.lib;
+        SDL2_image.lib;
+        SDL2_mixer.lib;
+        SDL2_ttf.lib;
+        %(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- x64 platform -->
+  <ItemDefinitionGroup Condition="'$(Platform)'=='x64'">
+    <ClCompile>
+      <!-- Include path: build\native -> ../.. -> include -->
+      <AdditionalIncludeDirectories>
+        $(AdditionalIncludeDirectories);
+        $(MSBuildThisFileDirectory)../../include
+      </AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+
+    <Link>
+      <!-- Lib path: build\native -> ../.. -> lib/native/x64 -->
+      <AdditionalLibraryDirectories>
+        $(AdditionalLibraryDirectories);
+        $(MSBuildThisFileDirectory)../../lib/native/x64
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+        SDL2.lib;SDL2main.lib;
+        SDL2_image.lib;
+        SDL2_mixer.lib;
+        SDL2_ttf.lib;
+        %(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- 1) x86 DLL Dosyalarını Tanımla -->
+  <ItemGroup Condition="'$(Platform)'=='x86'">
+    <!-- build\native -> 2 klasör yukarı -> lib\native\x86 -->
+    <SDL2Dlls Include="$(MSBuildThisFileDirectory)../../lib/native/x86/*.dll" />
+  </ItemGroup>
+
+  <!-- 2) x64 DLL Dosyalarını Tanımla -->
+  <ItemGroup Condition="'$(Platform)'=='x64'">
+    <!-- build\native -> 2 klasör yukarı -> lib\native\x64 -->
+    <SDL2Dlls Include="$(MSBuildThisFileDirectory)../../lib/native/x64/*.dll" />
+  </ItemGroup>
+
+  <!-- 3) DLL'leri Derleme Bittikten Sonra Kopyala -->
+  <Target Name="CopySDL2Dlls" AfterTargets="Build">
+    <Copy
+      SourceFiles="@(SDL2Dlls)"
+      DestinationFolder="$(OutDir)"
+      SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

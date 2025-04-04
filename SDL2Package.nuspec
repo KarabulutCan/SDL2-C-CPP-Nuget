@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <!-- Paket Kimliği ve Sürümü -->
+    <id>SDL2Package</id>
+    <version>1.0.0</version>
+
+    <!-- Yazar(lar) ve Sahip(ler) -->
+    <authors>Rysesoft - Can Karabulut</authors>
+    <owners>Rysesoft - Can Karabulut</owners>
+
+    <license type="expression">Zlib</license>
+
+    <!-- Proje URL'si -->
+    <projectUrl>https://www.libsdl.org/</projectUrl>
+
+    <!-- Lisans Kabulü Gerekir mi? -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <!-- Paket Açıklaması ve Etiketler -->
+    <description>A C++ native NuGet package containing SDL2 and its sub-libraries. Includes SDL2, SDL2_Image, SDL2_Mixer, SDL2_TTF. in one package!</description>
+    <tags>SDL2 SDL Image Mixer TTF</tags>
+    
+    <dependencies>
+      <group targetFramework="native0.0" />
+    </dependencies>
+
+    <!-- Bu satır, NuGet.org üzerinde 'docs\ReadMe.md' dosyasını Readme olarak gösterir -->
+    <readme>docs\ReadMe.md</readme>
+  </metadata>
+
+  <files>
+    <!-- SDL2 header dosyaları (include\SDL2\...) -->
+    <file src="include\SDL2\**\*.*" target="include\SDL2" />
+
+    <!-- x86 kütüphane/dll dosyaları (lib\native\x86\...) -->
+    <file src="lib\native\x86\**\*.*" target="lib\native\x86" />
+
+    <!-- x64 kütüphane/dll dosyaları (lib\native\x64\...) -->
+    <file src="lib\native\x64\**\*.*" target="lib\native\x64" />
+
+    <!-- .targets dosyası (build\native\*.targets) -->
+    <file src="build\native\*.targets" target="build\native" />
+
+    <!-- 'docs\ReadMe.md' dosyasını paket içinde 'docs\' klasörüne koyar -->
+    <file src="docs\ReadMe.md" target="docs" />
+  </files>
+
+</package>
