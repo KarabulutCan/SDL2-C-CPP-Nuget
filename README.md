@@ -40,7 +40,6 @@ Include the headers:
 
 #include <SDL2/SDL.h>
 #include <iostream>
-
 int main(int argc, char\* argv[])
 {
 if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -49,10 +48,6 @@ std::cerr << "SDL_Init failed: " << SDL_GetError() << std::endl;
 return 1;
 }
 std::cout << "SDL is initialized successfully!\n";
-
-    // Your SDL code here...
-
     SDL_Quit();
     return 0;
-
 }
